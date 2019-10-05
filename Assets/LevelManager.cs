@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     int currCamera = 0;
 
     public GameObject PlayerPrefab;    // The basic brain
-    PlayerController activePlayer;
+    GameObject activePlayer;
 
     // Update is called once per frame
     void Update()
@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator Co_RestartLevel()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         SpawnLevel();
         SpawnPlayer();
@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator Co_FinishLevel()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         currLevel++;
         SpawnLevel();
@@ -81,7 +81,7 @@ public class LevelManager : MonoBehaviour
             Destroy(activePlayer.gameObject);
         }
 
-        activePlayer = playerGO.GetComponent<PlayerController>();
+        activePlayer = playerGO;
 
         TurnOffCameras();
         currCamera = (currCamera + 1) % virtualCameras.Length;

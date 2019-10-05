@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6741777495898446479}
   - component: {fileID: 5619893810328409827}
-  - component: {fileID: 140483336934769098}
-  - component: {fileID: 5824232310543426909}
   - component: {fileID: 2514514022571817829}
+  - component: {fileID: -2582364907797485250}
+  - component: {fileID: 7703998537045270508}
   m_Layer: 0
   m_Name: enemyRat
   m_TagString: Untagged
@@ -61,31 +61,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6608018, y: 0.30243707}
   m_EdgeRadius: 0
---- !u!114 &140483336934769098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5654208573736997555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6f8dd142b8c0d41988813be5068862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WalkingSpeed: 2
---- !u!114 &5824232310543426909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5654208573736997555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2617b663f3647ce4bbbd56cc6c470714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2514514022571817829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +73,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9faa3d86b4f4e4f9ed686ee0c048b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2582364907797485250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654208573736997555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ffd12f022718043a0ce59d5971cf7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGroundNormalY: 0.65
+  maxSpeed: 2
+  jumpHeight: 2
+--- !u!50 &7703998537045270508
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654208573736997555}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7059443833459769745
 GameObject:
   m_ObjectHideFlags: 0
