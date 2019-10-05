@@ -8,12 +8,12 @@ public class PlayerPlatformerController : PhysicsObject
 
     public float maxSpeed = 7;
     public float jumpHeight = 2.0f;
-
+    float flinchSpeed = 2;
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-
+    private Health health;
 
     // Use this for initialization
     void Awake()
@@ -21,6 +21,7 @@ public class PlayerPlatformerController : PhysicsObject
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
         levelManager = GameObject.FindObjectOfType<LevelManager>();
+        health = GetComponentInChildren<Health>();
     }
 
     public bool godMode = false;
@@ -31,7 +32,14 @@ public class PlayerPlatformerController : PhysicsObject
     {
         Vector2 move = Vector2.zero;
 
-        move.x = Input.GetAxis("Horizontal");
+        if (health.IsFlinching())
+        {
+            move.x = (spriteRenderer.flipX) ? flinchSpeed : -flinchSpeed;
+        }
+        else
+        {
+            move.x = Input.GetAxis("Horizontal");
+        }
 
         if (Input.GetButtonDown("Jump") && grounded)
         {
@@ -45,10 +53,13 @@ public class PlayerPlatformerController : PhysicsObject
             }
         }
 
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
-        if (flipSprite)
+        if (health.IsFlinching() == false)
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
+            if (flipSprite)
+            {
+                spriteRenderer.flipX = !spriteRenderer.flipX;
+            }
         }
 
         animator.SetBool("isJumping", !grounded);
@@ -63,7 +74,7 @@ public class PlayerPlatformerController : PhysicsObject
 
         if (collision.GetComponent<DeathTrigger>() != null)
         {
-            Die();
+            GetComponent<Health>().Die();
         }
         else if (collision.GetComponent<PickupBodyPart>() != null)
         {
@@ -72,20 +83,8 @@ public class PlayerPlatformerController : PhysicsObject
         }
     }
 
-    void Die()
+    private void OnDestroy()
     {
-        if (godMode)
-        {
-            Debug.Log("GOD MODE SAVE!");
-            return;
-        }
-
-        Debug.Log("DIE!!!");
-        // Spawn death animation
-
-        Destroy(gameObject);
-
-
         levelManager.RestartLevel();
     }
 

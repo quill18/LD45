@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6741777495898446479}
   - component: {fileID: 5619893810328409827}
-  - component: {fileID: 2514514022571817829}
   - component: {fileID: -2582364907797485250}
   - component: {fileID: 7703998537045270508}
-  m_Layer: 0
+  - component: {fileID: -1739569284579874896}
+  - component: {fileID: 2388655896519157398}
+  m_Layer: 9
   m_Name: enemyRat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,18 +62,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6608018, y: 0.30243707}
   m_EdgeRadius: 0
---- !u!114 &2514514022571817829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5654208573736997555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9faa3d86b4f4e4f9ed686ee0c048b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-2582364907797485250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +76,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   maxSpeed: 2
-  jumpHeight: 2
 --- !u!50 &7703998537045270508
 Rigidbody2D:
   serializedVersion: 4
@@ -109,6 +97,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-1739569284579874896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654208573736997555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0277181420af3cb41a22099140eeb29d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPs: 1
+  GodMode: 0
+  InvulTime: 0.1
+  FlinchTime: 0
+  DeathPrefabs:
+  - {fileID: 906920519417149957, guid: 3919b02748ec96c4abf8c1ed0ef69804, type: 3}
+--- !u!114 &2388655896519157398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654208573736997555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c932ddbc27480f46b99266eae86db22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
 --- !u!1 &7059443833459769745
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +139,7 @@ GameObject:
   - component: {fileID: 873124651358004198}
   - component: {fileID: 3493114398146997022}
   - component: {fileID: 5662454706529326378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
