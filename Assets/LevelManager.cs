@@ -8,7 +8,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        virtualCamera = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
+        virtualCameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
+        TurnOffCameras();
 
         //SpawnLevel();
         SpawnPlayer();
@@ -17,7 +18,8 @@ public class LevelManager : MonoBehaviour
     public GameObject[] Levels;
     int currLevel;
 
-    CinemachineVirtualCamera virtualCamera;
+    CinemachineVirtualCamera[] virtualCameras;
+    int currCamera = 0;
 
     public GameObject PlayerPrefab;    // The basic brain
     PlayerController activePlayer;
@@ -28,6 +30,33 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    public void RestartLevel()
+    {
+        StartCoroutine(Co_RestartLevel());
+    }
+
+    IEnumerator Co_RestartLevel()
+    {
+        yield return new WaitForSeconds(5f);
+
+        SpawnLevel();
+        SpawnPlayer();
+    }
+
+    public void FinishLevel()
+    {
+        StartCoroutine(Co_FinishLevel());
+    }
+
+    IEnumerator Co_FinishLevel()
+    {
+        yield return new WaitForSeconds(5f);
+
+        currLevel++;
+        SpawnLevel();
+        MovePlayerToStart();
+    }
+
     void SpawnPlayer()
     {
         if(activePlayer != null)
@@ -36,17 +65,48 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        PlayerStart ps = GameObject.FindObjectOfType<PlayerStart>();
 
-        GameObject playerGO = Instantiate(PlayerPrefab, ps.transform.position, Quaternion.identity);
+        UpdatePlayerTo(PlayerPrefab);
+        MovePlayerToStart();
+    }
+
+    public void UpdatePlayerTo(GameObject newPlayerPrefab)
+    {
+
+        GameObject playerGO = Instantiate(newPlayerPrefab);
+
+        if (activePlayer != null)
+        {
+            playerGO.transform.position = activePlayer.transform.position;
+            Destroy(activePlayer.gameObject);
+        }
 
         activePlayer = playerGO.GetComponent<PlayerController>();
 
-        virtualCamera.Follow = playerGO.transform;
+        TurnOffCameras();
+        currCamera = (currCamera + 1) % virtualCameras.Length;
+        virtualCameras[currCamera].Follow = playerGO.transform;
+        virtualCameras[currCamera].gameObject.SetActive(true);
+    }
+
+    void TurnOffCameras()
+    {
+        foreach (CinemachineVirtualCamera cvc in virtualCameras)
+        {
+            cvc.gameObject.SetActive(false);
+        }
+    }
+
+    void MovePlayerToStart()
+    {
+        PlayerStart ps = GameObject.FindObjectOfType<PlayerStart>();
+        activePlayer.transform.position = ps.transform.position;
     }
 
     void SpawnLevel()
     {
+        // Spawn level
+
 
     }
 }

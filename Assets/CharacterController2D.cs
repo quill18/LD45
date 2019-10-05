@@ -23,7 +23,7 @@ public class CharacterController2D : MonoBehaviour
 
     float maxVelocity = 60; // world units per second
 
-    float jumpHeight = 2.1f;
+    public float jumpHeight = 2.0f;
 
     public void SetXVelocity(float x)
     {
@@ -57,7 +57,7 @@ public class CharacterController2D : MonoBehaviour
 
         isGrounded = false;
 
-        Debug.Log("---------------------------------------------" + cols.Length);
+        //Debug.Log("---------------------------------------------" + cols.Length);
 
         float oldY = transform.position.y;
 
