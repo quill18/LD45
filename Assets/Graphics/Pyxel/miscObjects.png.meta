@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -484170646180147444
     second: SpiderWebCorner32d
+  - first:
+      213: 1368223701114743417
+    second: PileOfFlesh
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -187,7 +190,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,7 +211,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,7 +232,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,6 +240,27 @@ TextureImporter:
       bones: []
       spriteID: c25c8b54c3e19ba449b52cc025d2898b
       internalID: -484170646180147444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PileOfFlesh
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 61
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d767009a0571f49bd27a175d7e9202
+      internalID: 1368223701114743417
       vertices: []
       indices: 
       edges: []
