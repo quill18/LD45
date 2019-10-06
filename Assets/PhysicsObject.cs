@@ -19,7 +19,7 @@ public class PhysicsObject : MonoBehaviour
 
 
     protected const float minMoveDistance = 0.001f;
-    protected const float shellRadius = 0.01f;
+    protected const float shellRadius = 0.1f;
 
     void OnEnable()
     {
@@ -97,6 +97,7 @@ public class PhysicsObject : MonoBehaviour
                 }
 
                 float modifiedDistance = hitBufferList[i].distance - shellRadius;
+                //Debug.Log(modifiedDistance);
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
 

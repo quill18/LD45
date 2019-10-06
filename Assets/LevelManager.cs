@@ -24,6 +24,8 @@ public class LevelManager : MonoBehaviour
     public GameObject PlayerPrefab;    // The basic brain
     GameObject activePlayer;
 
+    public int WaffleCount;
+
     // Update is called once per frame
     void Update()
     {
@@ -66,12 +68,16 @@ public class LevelManager : MonoBehaviour
 
 
         UpdatePlayerTo(PlayerPrefab);
+
         MovePlayerToStart();
     }
 
     public void UpdatePlayerTo(GameObject newPlayerPrefab)
     {
-
+        if(newPlayerPrefab== null)
+        {
+            Debug.Log("wah?");
+        }
         GameObject playerGO = Instantiate(newPlayerPrefab);
 
         if (activePlayer != null)
@@ -81,6 +87,8 @@ public class LevelManager : MonoBehaviour
         }
 
         activePlayer = playerGO;
+
+        PlayerPrefab = newPlayerPrefab;
 
         TurnOffCameras();
         currCamera = (currCamera + 1) % virtualCameras.Length;
@@ -96,10 +104,28 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    Transform checkpointLocation;
+
+    public void SetCheckpoint(Transform t)
+    {
+        checkpointLocation = t;
+    }
+
     void MovePlayerToStart()
     {
-        PlayerStart ps = GameObject.FindObjectOfType<PlayerStart>();
-        activePlayer.transform.position = ps.transform.position;
+        Vector3 pos;
+
+        if (checkpointLocation != null)
+        {
+            pos = checkpointLocation.position;
+        }
+        else
+        {
+            PlayerStart ps = GameObject.FindObjectOfType<PlayerStart>();
+            pos = ps.transform.position;
+        }
+
+        activePlayer.transform.position = pos;
     }
 
     void SpawnLevel()

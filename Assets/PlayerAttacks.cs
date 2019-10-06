@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerAttacks : Attacks
 {
-    float AttackCooldown = 0.25f;
+    public float AttackCooldown = 0.25f;
     float timeLeft;
+    public float windUpTime = 0;
 
     void Update()
     {
@@ -14,7 +15,7 @@ public class PlayerAttacks : Attacks
         if (timeLeft <= 0 && Input.GetButtonDown("Fire1") )
         {
             timeLeft = AttackCooldown;
-            DoAttack();
+            DoAttack(windUpTime);
         }
     }
 }

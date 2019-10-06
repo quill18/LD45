@@ -67,7 +67,7 @@ public class AIPatrol_Controller : PhysicsObject
             rayPos.x = boxCollider.bounds.min.x;
         }
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(rayPos,
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(rayPos, boxCollider.bounds.size, 0f, 
             (spriteRenderer.flipX) ? Vector2.left : Vector2.right,
             0.1f);
 
@@ -115,6 +115,9 @@ public class AIPatrol_Controller : PhysicsObject
                 // stop hitting yourself
                 continue;
             }
+
+            if (hit.collider.isTrigger)
+                continue;
 
             // if we got here, we hit something, so we still have solid ground beneath us.
             return true;
