@@ -101,6 +101,8 @@ GameObject:
   - component: {fileID: 5811569726745713523}
   - component: {fileID: 3980191788359130455}
   - component: {fileID: -1265040771190193009}
+  - component: {fileID: 8764253114431211705}
+  - component: {fileID: 880203935976386191}
   m_Layer: 8
   m_Name: Player_OneArm
   m_TagString: Untagged
@@ -184,7 +186,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
+  DashLength: 0
+  JumpAudio: {fileID: 0}
+  LandAudio: {fileID: 8300000, guid: 3b3deb6f8d644e344b164c9e0689bebf, type: 3}
+  SoftLandAudio: {fileID: 8300000, guid: 3b3deb6f8d644e344b164c9e0689bebf, type: 3}
+  DashSounds: []
   maxSpeed: 4
+  dashSpeed: 8
   jumpHeight: 3
   godMode: 1
 --- !u!114 &3980191788359130455
@@ -206,6 +214,11 @@ MonoBehaviour:
   WallDestRange: 0
   WallDestHeight: 0
   AttackPrefabOffset: {x: 0.48, y: 0, z: 0}
+  AttackSounds:
+  - {fileID: 8300000, guid: 22cc80bff525985469424ca782524d06, type: 3}
+  - {fileID: 8300000, guid: 573ac03f2a5babb498a55da7a92a6d2c, type: 3}
+  - {fileID: 8300000, guid: 07751f6499a00b6468cf528251d5f7db, type: 3}
+  - {fileID: 8300000, guid: 6a3e8c9c3156d244a83d7ac27f1c6144, type: 3}
   AttackCooldown: 0.25
   windUpTime: 0
 --- !u!114 &-1265040771190193009
@@ -226,6 +239,123 @@ MonoBehaviour:
   FlinchTime: 0.2
   DeathPrefabs:
   - {fileID: 906920519417149957, guid: 64b996626dbadf74f9b43e1059a0a3fc, type: 3}
+  DeathSounds:
+  - {fileID: 8300000, guid: ec42c118c516c5b41bdddefa921832b1, type: 3}
+  HurtSounds:
+  - {fileID: 8300000, guid: bb50b1b7e731f104eab3aef87a76b42c, type: 3}
+  - {fileID: 8300000, guid: 7f61a150a0ee9ef468cf23c8aea89e0a, type: 3}
+  - {fileID: 8300000, guid: 59cb0c18fd1ccc146b36736a3fbdc41d, type: 3}
+  - {fileID: 8300000, guid: 8f2ab75e8d8475c4da0e346f1a3f9bcd, type: 3}
+  - {fileID: 8300000, guid: a2e81da83808a2d4b998fd0680fd7a33, type: 3}
+--- !u!82 &8764253114431211705
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6173825597656887898}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 283b95a1a076c6e40982e6be2e51dd30, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &880203935976386191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6173825597656887898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65237b70793da8a49aa76634b44319c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: CTRL or Left Mouse to Attack
 --- !u!1 &6173825598766025150
 GameObject:
   m_ObjectHideFlags: 0

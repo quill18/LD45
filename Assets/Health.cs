@@ -17,6 +17,9 @@ public class Health : MonoBehaviour
 
     public GameObject[] DeathPrefabs;
 
+    public AudioClip[] DeathSounds;
+    public AudioClip[] HurtSounds;
+
     private void Update()
     {
         invulTimeLeft -= Time.deltaTime;
@@ -44,7 +47,17 @@ public class Health : MonoBehaviour
         flinchTimeLeft = FlinchTime;
 
         if (HPs <= 0)
+        {
             Die();
+        }
+        else
+        {
+            SoundManager.PlayClip(HurtSounds);
+        }
+
+        PhysicsObject po = GetComponent<PhysicsObject>();
+        if (po != null)
+            po.StopDash();
     }
 
     public void Die()
@@ -63,6 +76,8 @@ public class Health : MonoBehaviour
                 Instantiate(dp, transform.position, Quaternion.identity);
             }
         }
+
+        SoundManager.PlayClip(DeathSounds);
 
         Destroy(gameObject);
     }

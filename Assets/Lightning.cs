@@ -12,23 +12,32 @@ public class Lightning : MonoBehaviour
 
         if (mr == null)
             Debug.Log("No mesh renderer.");
+
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
     }
+
+    LevelManager levelManager;
+
+    public AudioClip[] ThunderSounds;
 
     float strikeDelay = 10;
     float nextStrike;
-    bool tripleStrike = false;
+    int numStrike = 2;
 
     MeshRenderer mr;
 
     void Randomize()
     {
         nextStrike = Random.Range(strikeDelay, strikeDelay * 1.5f);
-        tripleStrike = Random.Range(0, 3) == 0;
+        numStrike = (Random.Range(0, 3) == 0) ? 3 : 2;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (levelManager.isOutdoors() == false)
+            return;
+
         nextStrike -= Time.deltaTime;
 
         if(nextStrike <= 0)
@@ -46,8 +55,7 @@ public class Lightning : MonoBehaviour
             else if(nextStrike < -0.3f)
             {
                 mr.enabled = false;
-                if (tripleStrike == false)
-                    Randomize();
+                Randomize();
             }
             else if (nextStrike < -0.2f)
             {
@@ -59,6 +67,9 @@ public class Lightning : MonoBehaviour
             }
             else
             {
+                if(mr.enabled == false)
+                    SoundManager.PlayClip(ThunderSounds);
+
                 mr.enabled = true;
             }
             

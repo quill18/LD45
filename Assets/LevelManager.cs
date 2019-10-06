@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
     public GameObject[] Levels;
     int currLevel;
 
+    public GameObject LevelEndScreen;
+
     CinemachineVirtualCamera[] virtualCameras;
     int currCamera = 0;
 
@@ -32,10 +34,25 @@ public class LevelManager : MonoBehaviour
 
     public bool isLoading = false;
 
+    public CanvasGroup EndScreen;
+
     // Update is called once per frame
     void Update()
     {
-        if(activePlayer == null && isLoading == false)
+        if (Input.GetKeyDown(KeyCode.E) && Input.GetKey(KeyCode.LeftShift))
+        {
+            FinishLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.B) && Input.GetKey(KeyCode.LeftShift))
+        {
+            PickupBodyPart b = GameObject.FindObjectOfType<PickupBodyPart>();
+            if(b != null)
+            {
+                UpdatePlayerTo(b.NewPlayerPrefab);
+            }
+        }
+
+        if (activePlayer == null && isLoading == false)
         {
             // Might have switched bodies?
             PlayerPlatformerController ppc = GameObject.FindObjectOfType<PlayerPlatformerController>();
@@ -61,25 +78,46 @@ public class LevelManager : MonoBehaviour
         isLoading = true;
         yield return new WaitForSeconds(2f);
 
-        SpawnLevel();
+        //SpawnLevel();
         SpawnPlayer();
         isLoading = false;
     }
 
     public void FinishLevel()
     {
+        checkpointLocation = null;
         StartCoroutine(Co_FinishLevel());
     }
 
     IEnumerator Co_FinishLevel()
     {
         isLoading = true;
+        LevelEndScreen.SetActive(true);
         yield return new WaitForSeconds(2f);
+        LevelEndScreen.SetActive(false);
 
         currLevel++;
-        SpawnLevel();
-        MovePlayerToStart();
-        isLoading = false;
+
+        if (currLevel >= Levels.Length)
+        {
+            EndGame();
+        }
+        else
+        {
+            SpawnLevel();
+            MovePlayerToStart();
+            isLoading = false;
+        }
+    }
+
+    void EndGame()
+    {
+        Animator[] anims = EndScreen.GetComponentsInChildren<Animator>();
+
+        foreach(Animator anim in anims)
+        {
+            anim.SetTrigger("FadeIn");
+        }
     }
 
     void SpawnPlayer()
@@ -150,6 +188,11 @@ public class LevelManager : MonoBehaviour
         }
 
         activePlayer.transform.position = pos;
+    }
+
+    public bool isOutdoors()
+    {
+        return currLevel != 1;
     }
 
     void SpawnLevel()

@@ -75,6 +75,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
+  DashLength: 0
+  JumpAudio: {fileID: 0}
+  LandAudio: {fileID: 0}
+  SoftLandAudio: {fileID: 0}
   maxSpeed: 2
 --- !u!50 &7703998537045270508
 Rigidbody2D:
@@ -115,6 +119,9 @@ MonoBehaviour:
   FlinchTime: 0
   DeathPrefabs:
   - {fileID: 906920519417149957, guid: 31d9db0e793aa0941a4b6a8a30aa2291, type: 3}
+  DeathSounds:
+  - {fileID: 8300000, guid: 907cc9f6b9cb45a41a8fab0fd18fd1ea, type: 3}
+  HurtSounds: []
 --- !u!114 &2388655896519157398
 MonoBehaviour:
   m_ObjectHideFlags: 0

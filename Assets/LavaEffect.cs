@@ -11,7 +11,6 @@ public class LavaEffect : MonoBehaviour
         tr = GetComponent<TilemapRenderer>();
 
         originalColor = tr.material.color;
-        Debug.Log(originalColor);
         altColor = new Color(0.7f, 0.7f, 1.0f);
     }
 

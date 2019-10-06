@@ -30,11 +30,26 @@ public class PhysicsObject : MonoBehaviour
     public bool CanDash { get { return DashLength > 0; } }
     public bool isDashing { get { return dashLeft > 0; } }
 
+    AudioSource audioSource;
+
+    public AudioClip JumpAudio;
+    public AudioClip LandAudio;
+    public AudioClip SoftLandAudio;
+
+    public AudioClip[] DashSounds;
+
+    public void StopDash()
+    {
+        dashLeft = 0;
+    }
+
     protected void StartDash()
     {
         if (dashAvailable)
         {
             dashLeft = DashLength;
+
+            SoundManager.PlayClip(DashSounds);
         }
     }
 
@@ -48,6 +63,8 @@ public class PhysicsObject : MonoBehaviour
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
         contactFilter.useLayerMask = true;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -82,14 +99,35 @@ public class PhysicsObject : MonoBehaviour
 
         Vector2 move = moveAlongGround * deltaPosition.x;
 
+
         Movement(move, false);
 
         move = Vector2.up * deltaPosition.y;
-
         Movement(move, true);
 
         if (grounded)
             dashAvailable = true;
+
+        PlayWalkSound(grounded && Mathf.Abs(velocity.x) > 0.1f);
+
+    }
+
+    void PlayWalkSound(bool play)
+    {
+        if (audioSource == null)
+            return;
+
+        if (play)
+        {
+            if (audioSource.isPlaying == false)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Pause();
+        }
     }
 
     void Movement(Vector2 move, bool yMovement)
@@ -111,6 +149,16 @@ public class PhysicsObject : MonoBehaviour
                 if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;
+                    float landSoundThreshold = -7.5f;
+                    if (velocity.y < landSoundThreshold)
+                    {
+                        SoundManager.PlayClip(LandAudio);
+                    }
+                    if (velocity.y < landSoundThreshold/2f)
+                    {
+                        SoundManager.PlayClip(SoftLandAudio);
+                    }
+
                     if (yMovement)
                     {
                         groundNormal = currentNormal;

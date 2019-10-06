@@ -26,6 +26,8 @@ public abstract class Attacks : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
 
+    public AudioClip[] AttackSounds;
+
     void OnDrawGizmosSelected()
     {
         // Draw a yellow sphere at the transform's position
@@ -43,6 +45,8 @@ public abstract class Attacks : MonoBehaviour
     {
         if(windUpTime > 0)
             yield return new WaitForSeconds(windUpTime);
+
+        SoundManager.PlayClip(AttackSounds);
 
         SpawnPrefabs();
         if (WallDestHeight > 0 && WallDestRange > 0)

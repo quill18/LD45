@@ -10,6 +10,8 @@ public class PickupWaffle : MonoBehaviour
         
     }
 
+    public AudioClip[] PickupSounds;
+
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +21,7 @@ public class PickupWaffle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject.FindObjectOfType<LevelManager>().GotWaffle();
+        SoundManager.PlayClip(PickupSounds);
 
         // Reset dash timer
 

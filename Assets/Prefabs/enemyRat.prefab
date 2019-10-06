@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7703998537045270508}
   - component: {fileID: -1739569284579874896}
   - component: {fileID: 2388655896519157398}
+  - component: {fileID: 4984266189301235330}
   m_Layer: 9
   m_Name: enemyRat
   m_TagString: Untagged
@@ -75,6 +76,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
+  DashLength: 0
+  JumpAudio: {fileID: 0}
+  LandAudio: {fileID: 0}
+  SoftLandAudio: {fileID: 0}
   maxSpeed: 2
 --- !u!50 &7703998537045270508
 Rigidbody2D:
@@ -115,6 +120,10 @@ MonoBehaviour:
   FlinchTime: 0
   DeathPrefabs:
   - {fileID: 906920519417149957, guid: 3919b02748ec96c4abf8c1ed0ef69804, type: 3}
+  DeathSounds:
+  - {fileID: 8300000, guid: 391f39eea141d874c890bd1d897289c7, type: 3}
+  - {fileID: 8300000, guid: efe36c87ba94e4e40ba9b8852dd35f28, type: 3}
+  HurtSounds: []
 --- !u!114 &2388655896519157398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +137,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
+--- !u!114 &4984266189301235330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654208573736997555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a2456f417e01e45b14bfc67d40fb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - {fileID: 8300000, guid: eac1b4d1a12500c469d51780cf52a434, type: 3}
+  - {fileID: 8300000, guid: e2fd2d1533c896e408cb0c80c7348ca0, type: 3}
+  - {fileID: 8300000, guid: 7b14b5120eaabfc408d7f9f660d1be9e, type: 3}
+  - {fileID: 8300000, guid: c1dbd85cae7d68746b018d05570b3da7, type: 3}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &7059443833459769745
 GameObject:
   m_ObjectHideFlags: 0

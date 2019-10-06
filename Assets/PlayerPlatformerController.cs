@@ -34,7 +34,7 @@ public class PlayerPlatformerController : PhysicsObject
     {
         if (levelManager.isLoading)
         {
-            Debug.Log("LOADING");
+            //Debug.Log("LOADING");
             targetVelocity = Vector2.zero;
             return;
         }
@@ -57,6 +57,7 @@ public class PlayerPlatformerController : PhysicsObject
 
         if (Input.GetButtonDown("Jump") && grounded && isDashing == false)
         {
+            SoundManager.PlayClip(JumpAudio);
             velocity.y = Mathf.Sqrt(-2.0f * Physics2D.gravity.y * (jumpHeight + 0.5f));
         }
         else if (Input.GetButtonUp("Jump"))
@@ -91,7 +92,7 @@ public class PlayerPlatformerController : PhysicsObject
         targetVelocity = move * (isDashing ? dashSpeed : maxSpeed);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("OnTriggerEnter2D: " + collision.gameObject.name);
 
