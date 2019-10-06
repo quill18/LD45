@@ -32,6 +32,12 @@ public class Sticky : MonoBehaviour
 
         // Sticking!
 
+        if(rb == null)
+        {
+            Debug.LogError(gameObject.name + " is stick with no rigidbody?");
+            return;
+        }
+
         rb.isKinematic = true;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;

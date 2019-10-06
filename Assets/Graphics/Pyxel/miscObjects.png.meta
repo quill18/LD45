@@ -23,6 +23,24 @@ TextureImporter:
   - first:
       213: 1368223701114743417
     second: PileOfFlesh
+  - first:
+      213: -6028544418271411433
+    second: Legs
+  - first:
+      213: -7407227882909291114
+    second: Legs_Chained
+  - first:
+      213: -6925588649685623589
+    second: Chain_Solo
+  - first:
+      213: 4935094344801165738
+    second: Chain_Long
+  - first:
+      213: -9012844310548877031
+    second: Chain_Short1
+  - first:
+      213: 1885076032286194498
+    second: Chain_Short2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -253,7 +271,7 @@ TextureImporter:
         width: 61
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,6 +279,132 @@ TextureImporter:
       bones: []
       spriteID: 90d767009a0571f49bd27a175d7e9202
       internalID: 1368223701114743417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 65
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa752127b625bfe46996a753359701cd
+      internalID: -6028544418271411433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Legs_Chained
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 33
+        width: 14
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffbde724a249ec40a3e16973378ee27
+      internalID: -7407227882909291114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chain_Solo
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 65
+        width: 3
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b1735734fabd534c82f11c6dbac8c48
+      internalID: -6925588649685623589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chain_Long
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 67
+        width: 5
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1505eb75f791cd47b8e15a8d985252a
+      internalID: 4935094344801165738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chain_Short1
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 95
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5a6763e17a3a24419471358eb59c0c3
+      internalID: -9012844310548877031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chain_Short2
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 101
+        width: 5
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ea7adde1a28b8246a3cacb70bdd1c6d
+      internalID: 1885076032286194498
       vertices: []
       indices: 
       edges: []

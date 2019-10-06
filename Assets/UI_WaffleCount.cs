@@ -18,6 +18,6 @@ public class UI_WaffleCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = ": " + levelManager.WaffleCount;
+        text.text = ": " + levelManager.levelWafflesGot + "/" + levelManager.levelWaffles;
     }
 }

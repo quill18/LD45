@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class DestructibleTerrain : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject DebrisPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

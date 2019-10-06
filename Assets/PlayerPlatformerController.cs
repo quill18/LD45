@@ -7,6 +7,8 @@ public class PlayerPlatformerController : PhysicsObject
     // Modified from: https://learn.unity.com/tutorial/live-session-2d-platformer-character-controller
 
     public float maxSpeed = 7;
+    public float dashSpeed = 8;
+
     public float jumpHeight = 2.0f;
     float flinchSpeed = 2;
 
@@ -28,12 +30,11 @@ public class PlayerPlatformerController : PhysicsObject
 
     LevelManager levelManager;
 
-    public bool isLoading;
-
     protected override void ComputeVelocity()
     {
-        if (isLoading)
+        if (levelManager.isLoading)
         {
+            Debug.Log("LOADING");
             targetVelocity = Vector2.zero;
             return;
         }
@@ -45,12 +46,16 @@ public class PlayerPlatformerController : PhysicsObject
         {
             move.x = (spriteRenderer.flipX) ? flinchSpeed : -flinchSpeed;
         }
+        else if(isDashing)
+        {
+            move.x = (spriteRenderer.flipX) ? -1 : 1;
+        }
         else
         {
             move.x = Input.GetAxis("Horizontal");
         }
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && grounded && isDashing == false)
         {
             velocity.y = Mathf.Sqrt(-2.0f * Physics2D.gravity.y * (jumpHeight + 0.5f));
         }
@@ -62,6 +67,11 @@ public class PlayerPlatformerController : PhysicsObject
             }
         }
 
+        if (Input.GetButtonDown("Dash") && isDashing == false)
+        {
+            StartDash();
+        }
+
         if (health.IsFlinching() == false)
         {
             bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < -0.01f));
@@ -71,10 +81,14 @@ public class PlayerPlatformerController : PhysicsObject
             }
         }
 
+        if(CanDash)
+            animator.SetBool("isDashing", isDashing);
+
         animator.SetBool("isJumping", !grounded);
         animator.SetFloat("walkSpeed", Mathf.Abs(velocity.x) / maxSpeed);
 
-        targetVelocity = move * maxSpeed;
+
+        targetVelocity = move * (isDashing ? dashSpeed : maxSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -92,14 +106,8 @@ public class PlayerPlatformerController : PhysicsObject
         }
         else if (collision.GetComponent<LevelExit>() != null)
         {
-            isLoading = true;
             levelManager.FinishLevel();
         }
-    }
-
-    private void OnDestroy()
-    {
-        levelManager.RestartLevel();
     }
 
 }

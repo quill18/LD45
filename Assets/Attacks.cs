@@ -54,8 +54,6 @@ public abstract class Attacks : MonoBehaviour
         Vector2 pos = transform.position + (spriteRenderer.flipX ? -AttackPrefabOffset : AttackPrefabOffset);
         Vector2 dir = spriteRenderer.flipX ? Vector2.left : Vector2.right;
 
-
-
         bool tryAgain = false;
 
         do

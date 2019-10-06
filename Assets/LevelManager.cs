@@ -24,11 +24,31 @@ public class LevelManager : MonoBehaviour
     public GameObject PlayerPrefab;    // The basic brain
     GameObject activePlayer;
 
-    public int WaffleCount;
+    public int levelWaffles;
+    public int levelWafflesGot;
+
+    public int globalWaffles;
+    public int globalWafflesGot;
+
+    public bool isLoading = false;
 
     // Update is called once per frame
     void Update()
     {
+        if(activePlayer == null && isLoading == false)
+        {
+            // Might have switched bodies?
+            PlayerPlatformerController ppc = GameObject.FindObjectOfType<PlayerPlatformerController>();
+            if(ppc != null)
+            {
+                activePlayer = ppc.gameObject;
+            }
+            else
+            {
+                // Player must be dead
+                RestartLevel();
+            }
+        }
     }
 
     public void RestartLevel()
@@ -38,10 +58,12 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator Co_RestartLevel()
     {
+        isLoading = true;
         yield return new WaitForSeconds(2f);
 
         SpawnLevel();
         SpawnPlayer();
+        isLoading = false;
     }
 
     public void FinishLevel()
@@ -51,11 +73,13 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator Co_FinishLevel()
     {
+        isLoading = true;
         yield return new WaitForSeconds(2f);
 
         currLevel++;
         SpawnLevel();
         MovePlayerToStart();
+        isLoading = false;
     }
 
     void SpawnPlayer()
@@ -126,7 +150,6 @@ public class LevelManager : MonoBehaviour
         }
 
         activePlayer.transform.position = pos;
-        activePlayer.GetComponent<PlayerPlatformerController>().isLoading = false;
     }
 
     void SpawnLevel()
@@ -135,5 +158,16 @@ public class LevelManager : MonoBehaviour
         {
             Levels[i].SetActive(i == currLevel);
         }
+
+        levelWaffles = GameObject.FindObjectsOfType<PickupWaffle>().Length;
+        levelWafflesGot = 0;
+
+        globalWaffles += levelWaffles;
+    }
+
+    public void GotWaffle()
+    {
+        levelWafflesGot++;
+        globalWafflesGot++;
     }
 }

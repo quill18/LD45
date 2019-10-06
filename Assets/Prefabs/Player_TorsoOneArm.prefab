@@ -184,7 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
+  DashLength: 0
   maxSpeed: 4
+  dashSpeed: 8
   jumpHeight: 3
   godMode: 1
 --- !u!114 &3980191788359130455
@@ -203,8 +205,8 @@ MonoBehaviour:
   - {fileID: 4666897899739174265, guid: 5b87cf078653b4b4a90ddd346265a2bb, type: 3}
   - {fileID: 2299889638614864810}
   HitBoxes: []
-  WallDestRange: 1.5
-  WallDestHeight: 2
+  WallDestRange: 0
+  WallDestHeight: 0
   AttackPrefabOffset: {x: 1.84, y: 0.08, z: 0}
   AttackCooldown: 0.5
   windUpTime: 0.25

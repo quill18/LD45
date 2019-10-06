@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 906920519417149959}
   - component: {fileID: 906920519417149958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Goresplosion_Med_white
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 64241180441664541, guid: c05d7ca840e8dce428d5facef178a85e, type: 3}
   NumSpawn: 100
+  NumWaves: 1
   ExplosionForce: 10
   SpawnRadius: 0.1
-  UpSpawnOnly: 1
+  UpSpawnOnly: 0

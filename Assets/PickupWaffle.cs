@@ -18,7 +18,10 @@ public class PickupWaffle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject.FindObjectOfType<LevelManager>().WaffleCount++;
+        GameObject.FindObjectOfType<LevelManager>().GotWaffle();
+
+        // Reset dash timer
+
         // Play Sound
         // Animation/particles?
         Destroy(gameObject);
