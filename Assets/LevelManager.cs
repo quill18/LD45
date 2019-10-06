@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
         virtualCameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
         TurnOffCameras();
 
-        //SpawnLevel();
+        SpawnLevel();
         SpawnPlayer();
     }
 
@@ -126,12 +126,14 @@ public class LevelManager : MonoBehaviour
         }
 
         activePlayer.transform.position = pos;
+        activePlayer.GetComponent<PlayerPlatformerController>().isLoading = false;
     }
 
     void SpawnLevel()
     {
-        // Spawn level
-
-
+        for (int i = 0; i < Levels.Length; i++)
+        {
+            Levels[i].SetActive(i == currLevel);
+        }
     }
 }

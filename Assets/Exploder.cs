@@ -7,9 +7,29 @@ public class Exploder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    public GameObject[] Prefabs;
+    public int NumSpawn = 100;
+    public int NumWaves = 1;
+    public float ExplosionForce = 10f; // Actual force will be +/- 50%
+    public float SpawnRadius = 0.1f;
+    public bool UpSpawnOnly = true;
+
+    float waveDelay;
+
+    // Update is called once per frame
+    void Update()
+    {
+        waveDelay -= Time.deltaTime;
+
+        if (waveDelay > 0)
+            return;
+
         for (int i = 0; i < NumSpawn; i++)
         {
-            GameObject p = Prefabs[ Random.Range(0, Prefabs.Length) ];
+            GameObject p = Prefabs[Random.Range(0, Prefabs.Length)];
 
             Vector2 off = Random.insideUnitCircle * SpawnRadius;
             if (UpSpawnOnly)
@@ -26,17 +46,12 @@ public class Exploder : MonoBehaviour
 
             rb.AddForce(force, ForceMode2D.Impulse);
         }
-    }
 
-    public GameObject[] Prefabs;
-    public int NumSpawn = 100;
-    public float ExplosionForce = 10f; // Actual force will be +/- 50%
-    public float SpawnRadius = 0.1f;
-    public bool UpSpawnOnly = true;
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        NumWaves--;
+        waveDelay = 0.05f;
+        if (NumWaves <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

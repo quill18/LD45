@@ -28,9 +28,18 @@ public class PlayerPlatformerController : PhysicsObject
 
     LevelManager levelManager;
 
+    public bool isLoading;
+
     protected override void ComputeVelocity()
     {
+        if (isLoading)
+        {
+            targetVelocity = Vector2.zero;
+            return;
+        }
+
         Vector2 move = Vector2.zero;
+
 
         if (health.IsFlinching())
         {
@@ -80,6 +89,11 @@ public class PlayerPlatformerController : PhysicsObject
         {
             levelManager.UpdatePlayerTo(collision.GetComponent<PickupBodyPart>().NewPlayerPrefab);
             Destroy(collision.gameObject);
+        }
+        else if (collision.GetComponent<LevelExit>() != null)
+        {
+            isLoading = true;
+            levelManager.FinishLevel();
         }
     }
 

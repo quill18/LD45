@@ -60,7 +60,6 @@ public abstract class Attacks : MonoBehaviour
 
         do
         {
-            Debug.Log("---" + dir);
             tryAgain = false;
 
             RaycastHit2D[] hits = Physics2D.BoxCastAll(pos, new Vector2(1.0f, WallDestHeight), 0, dir);

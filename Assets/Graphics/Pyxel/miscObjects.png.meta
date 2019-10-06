@@ -10,10 +10,16 @@ TextureImporter:
     second: miscObjects_1
   - first:
       213: 8783411742346087384
-    second: miscObjects_2
+    second: SpiderWebCorner32a
   - first:
       213: 8620335211152504109
-    second: miscObjects_3
+    second: SpiderWebCorner32c
+  - first:
+      213: -890097235990511800
+    second: SpiderWebCorner32b
+  - first:
+      213: -484170646180147444
+    second: SpiderWebCorner32d
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -118,7 +124,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,7 +145,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,6 +153,90 @@ TextureImporter:
       bones: []
       spriteID: e65e06f4d6bac6a4f8ecdda488ef65fc
       internalID: 6346875539011391302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpiderWebCorner32a
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003c11fd36f231a48a442cf0c6c6c430
+      internalID: 8783411742346087384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpiderWebCorner32b
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c27c96756f76e5c49a50cb28a8615b8e
+      internalID: -890097235990511800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpiderWebCorner32c
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4700e777be953584cacfa1130409673e
+      internalID: 8620335211152504109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpiderWebCorner32d
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25c8b54c3e19ba449b52cc025d2898b
+      internalID: -484170646180147444
       vertices: []
       indices: 
       edges: []

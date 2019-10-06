@@ -114,7 +114,8 @@ MonoBehaviour:
   GodMode: 0
   InvulTime: 0.25
   FlinchTime: 0.2
-  DeathPrefabs: []
+  DeathPrefabs:
+  - {fileID: 906920519417149957, guid: 64b996626dbadf74f9b43e1059a0a3fc, type: 3}
 --- !u!1 &6173825598766025150
 GameObject:
   m_ObjectHideFlags: 0

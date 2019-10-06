@@ -203,7 +203,11 @@ MonoBehaviour:
   - {fileID: 4666897899739174265, guid: 9c97db9ef6599fd4dbc495795043f9b1, type: 3}
   - {fileID: 2299889638614864810}
   HitBoxes: []
+  WallDestRange: 0
+  WallDestHeight: 0
   AttackPrefabOffset: {x: 0.48, y: 0, z: 0}
+  AttackCooldown: 0.25
+  windUpTime: 0
 --- !u!114 &-1265040771190193009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +224,8 @@ MonoBehaviour:
   GodMode: 0
   InvulTime: 0.25
   FlinchTime: 0.2
-  DeathPrefabs: []
+  DeathPrefabs:
+  - {fileID: 906920519417149957, guid: 64b996626dbadf74f9b43e1059a0a3fc, type: 3}
 --- !u!1 &6173825598766025150
 GameObject:
   m_ObjectHideFlags: 0
